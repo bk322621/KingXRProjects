@@ -1000,6 +1000,10 @@ PrefabInstance:
       value: XR Origin (Player)
       objectReference: {fileID: 0}
     - target: {fileID: 5215118214870162133, guid: 0f40b965bf38a1c43b93c498d506e868, type: 3}
+      propertyPath: m_LineType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215118214870162133, guid: 0f40b965bf38a1c43b93c498d506e868, type: 3}
       propertyPath: m_AttachTransform
       value: 
       objectReference: {fileID: 65615202834264074}
@@ -1011,6 +1015,10 @@ PrefabInstance:
       propertyPath: m_RayOriginTransform
       value: 
       objectReference: {fileID: 65615202834264073}
+    - target: {fileID: 5215118214870162133, guid: 0f40b965bf38a1c43b93c498d506e868, type: 3}
+      propertyPath: m_RaycastSnapVolumeInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5358716519473559683, guid: 0f40b965bf38a1c43b93c498d506e868, type: 3}
       propertyPath: m_InteractionManager
       value: 

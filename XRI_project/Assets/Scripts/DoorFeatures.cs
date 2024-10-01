@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,49 @@ public class DoorFeatures : CoreFeatures
     {
         socketInteractor?.selectEntered.AddListener((s) =>
         {
-            //openDoor();
+            OpenDoor();
+            PlayOnStart();
         });
+
+        simpleInteractable?.selectEntered.AddListener((s) =>
+        {
+            OpenDoor();
+
+        });
+
+    }
+    public void OpenDoor()
+    {
+        if (!open)
+        {
+            PlayOnStart();
+            open = true;
+            StartCoroutine(ProcessMotion());
+        }
+    }
+    private IEnumerator ProcessMotion()
+    {
+        //constantly look to confirm door is open
+        while (open)
+        {
+            var angle = doorPivot.localEulerAngles.y < 100 ? doorPivot.localEulerAngles.y : doorPivot.localEulerAngles.y - 360;
+
+            angle = reverseAngleDirection ? Mathf.Abs(angle) : angle;
+
+            if (angle <= maxAngle)
+            {
+                doorPivot?.Rotate(Vector3.up, doorSpeed * Time.deltaTime * (reverseAngleDirection ? -1 : 1));
+            }
+            else
+            {
+                //when done interacting, turn off rigidbody
+                open = false;
+                var featureRigidBody = GetComponent<Rigidbody>();
+                if (featureRigidBody != null && MakeKinematicOnOpen) featureRigidBody.isKinematic = true;
+
+            }
+
+            yield return null;
+        }
     }
 }
