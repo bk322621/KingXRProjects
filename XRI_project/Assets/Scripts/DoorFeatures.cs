@@ -18,7 +18,7 @@ public class DoorFeatures : CoreFeatures
     private bool reverseAngleDirection = false;
 
     [SerializeField]
-    private float doorSpeed = 1.0f;
+    private float doorSpeed = 50.0f;
 
     [SerializeField]
     private bool open = false;
