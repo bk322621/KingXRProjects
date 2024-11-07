@@ -8,3 +8,8 @@ public enum FeatureDirection
 {
     Forward, Backward
 }
+
+public enum GameState
+{
+    Playing, Paused, Completed
+}
